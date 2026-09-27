@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>堺市 みんなの農業ひろば</title>
+  <style>
+    body { margin: 0; font-family: sans-serif; background: #fbf6ea; color: #2b2620; }
+    .loading { padding: 2rem; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="loading">アプリを読み込んでいます…</div>
+  <script>
+    // README.md に保存されている元のHTMLアプリをそのまま表示します。
+    // READMEの内容をindex.htmlへ移行した後も、同じリポジトリで動作します。
+    fetch('https://raw.githubusercontent.com/murujd/MIDORI/main/README.md', { cache: 'no-store' })
+      .then(response => {
+        if (!response.ok) throw new Error('アプリの読み込みに失敗しました');
+        return response.text();
+      })
+      .then(html => {
+        document.open();
+        document.write(html);
+        document.close();
+      })
+      .catch(error => {
+        document.body.innerHTML = '<div class="loading"><h1>読み込みエラー</h1><p>' +
+          error.message + '</p><p>README.mdを確認してください。</p></div>';
+      });
+  </script>
+</body>
+</html>
